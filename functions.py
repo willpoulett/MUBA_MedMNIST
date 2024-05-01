@@ -8,7 +8,7 @@ from keras import utils
 import random
 import pandas as pd
 
-def split_data(train_dataset, test_dataset, val_dataset, RANDOM_SEED = 1, one_hot_encoded = True, num_classes = 2, image_size = 128):
+def split_data(train_dataset, test_dataset, val_dataset, RANDOM_SEED = 1, one_hot_encoded = True, num_classes = 2, image_size = 128, three_d = False):
     """_summary_
 
     Args:
@@ -49,10 +49,10 @@ def split_data(train_dataset, test_dataset, val_dataset, RANDOM_SEED = 1, one_ho
         y_test_A = utils.to_categorical(y_test_A,dtype ="uint8", num_classes = num_classes)
         y_test_B = utils.to_categorical(y_test_B,dtype ="uint8", num_classes = num_classes)
 
-    X_train = np.array(X_train).reshape(-1, image_size, image_size, 1)
-    X_val = np.array(X_val).reshape(-1, image_size, image_size, 1)
-    X_test_A = np.array(X_test_A).reshape(-1, image_size, image_size, 1)
-    X_test_B = np.array(X_test_B).reshape(-1, image_size, image_size, 1)
+    X_train = np.array(X_train).reshape(-1, image_size, image_size, image_size if three_d else 1)
+    X_val = np.array(X_val).reshape(-1, image_size, image_size, image_size if three_d else 1)
+    X_test_A = np.array(X_test_A).reshape(-1, image_size, image_size, image_size if three_d else 1)
+    X_test_B = np.array(X_test_B).reshape(-1, image_size, image_size, image_size if three_d else 1)
 
 
     return X_train, y_train, X_val, y_val, X_test_A, y_test_A, X_test_B, y_test_B

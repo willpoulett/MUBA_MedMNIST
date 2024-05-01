@@ -105,8 +105,8 @@ def plot_calibration(true_images_A_df,true_images_B_df,mixup_images_df,boundary_
 
     plt.legend(loc="lower right")
 
-    axs[0].set_xlabel("Mean Predicted Probability (Positive Class: {positive_class})")
-    axs[0].set_ylabel("Fraction of Positives (Positive Class: {positive_class})")
+    axs[0].set_xlabel(f"Mean Predicted Probability (Positive Class: {positive_class})")
+    axs[0].set_ylabel(f"Fraction of Positives (Positive Class: {positive_class})")
     axs[0].set_title("Calibration Curve")
 
     axs[0].plot(prob_pred_A,prob_demented_A,marker = ".", label = "Test Set A")
