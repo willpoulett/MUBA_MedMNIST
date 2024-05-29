@@ -70,7 +70,6 @@ def get_label_counts(y_train,
         out = {tuple(i):j for i,j in zip(unique_rows,count)}
         print(f"\n{dataset_name}\n{out}  {class_names}")
 
-
 def build_basic_model(input_shape = (128,128,1), num_classes = 2, final_activation='softmax', loss = "categorical_crossentropy"):
 
     model = Sequential()
